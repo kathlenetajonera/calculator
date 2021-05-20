@@ -1,0 +1,88 @@
+@import "variables";
+
+:root {
+    box-sizing: border-box;
+}
+
+.body {
+    box-sizing: inherit;
+    margin: 0;
+
+    &--theme-1 {
+        background-color: $theme-1-main-bg;
+    }
+}
+
+.calculator {
+    padding: 2rem 1.5rem;
+
+    &__screen {
+        background-color: $theme-1-screen-bg;
+        padding: .5rem 1.5rem;
+        margin: 2rem 0;
+        border-radius: .5rem;
+    }
+
+    &__current-number {
+        font-family: $font-family;
+        font-size: 2rem;
+        color: $white;
+        text-align: right;
+    }
+
+    &__keypad {
+        background-color: $theme-1-keypad-bg;
+        padding: 1rem;
+        border-radius: .5rem;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        font-family: $font-family;
+        color: $white;
+        margin: 0;
+    }
+
+    &__text {
+        font-family: $font-family;
+        font-size: .7rem;
+        color: $white;
+        letter-spacing: 1px;
+        margin: 0;
+
+        &--theme {
+            margin-right: 1rem;
+        }
+    }
+
+    &__theme-toggle, &__toggle-range {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        margin-bottom: .25rem;
+    }
+
+    &__toggle-btn {
+        width: 70px;
+        height: 20px;
+        border-radius: 2rem;
+        background-color: $theme-1-keypad-bg;
+        padding: 5px;
+    }
+
+    &__toggle-indicator {
+        display: block;
+        width: 20px;
+        height: 100%;
+        border-radius: 50%;
+        background-color: $theme-1-equal-key-bg;
+    }
+}
+
+// .attribution { font-size: 11px; text-align: center; padding: 1rem; }
+// .attribution a { color: hsl(228, 45%, 44%); }

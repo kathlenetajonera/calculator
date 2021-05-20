@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <title>Calculator App</title>
+</head>
+<body class="body body--theme-1">
+
+  <div class="calculator">
+    <div class="header">
+      <h1 class="header__logo">calc</h1>
+
+      <div class="header__theme-toggle">
+        <p class="header__text header__text--theme">THEME</p>
+
+        <div class="header__toggle">
+          <div class="header__toggle-range">
+            <p class="header__text">1</p>
+            <p class="header__text">2</p>
+            <p class="header__text">3</p>
+          </div>
+
+          <div class="header__toggle-btn">
+            <span class="header__toggle-indicator"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calculator__screen">
+      <h1 class="calculator__current-number">399,981</h1>
+    </div>
+
+    <div class="calculator__keypad">
+      <button class="calculator__item" data-number="7">7</button>
+      <button class="calculator__item" data-number="8">8</button>
+      <button class="calculator__item" data-number="9">9</button>
+      <button class="calculator__item calculator__item--actions" data-action="delete">DEL</button>
+
+      <button class="calculator__item" data-number="4">4</button>
+      <button class="calculator__item" data-number="5">5</button>
+      <button class="calculator__item" data-number="6">6</button>
+      <button class="calculator__item" data-operation="addition">+</button>
+
+      <button class="calculator__item" data-number="1">1</button>
+      <button class="calculator__item" data-number="2">2</button>
+      <button class="calculator__item" data-number="3">3</button>
+      <button class="calculator__item" data-operation="subtraction">-</button>
+
+      <button class="calculator__item" data-number=".">.</button>
+      <button class="calculator__item" data-number="0">0</button>
+      <button class="calculator__item" data-operation="division">/</button>
+      <button class="calculator__item" data-operation="multiplication">X</button>
+
+      <button 
+        class="calculator__item calculator__item--actions calculator__item--span-2"
+        data-action="reset"
+      >
+        RESET
+      </button>
+      <button 
+        class="calculator__item calculator__item--actions calculator__item--span-2"
+        data-action="equals"
+      >
+        =
+      </button>
+    </div>
+  </div>
+
+
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by Kathlene Tajonera.
+  </div> -->
+</body>
+</html>

@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+:root {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.body {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+}
+
+.body--theme-1 {
+  background-color: #3a4764;
+}
+
+.calculator {
+  padding: 2rem 1.5rem;
+}
+
+.calculator__screen {
+  background-color: #182034;
+  padding: .5rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: .5rem;
+}
+
+.calculator__current-number {
+  font-family: "Spartan", sans-serif;
+  font-size: 2rem;
+  color: white;
+  text-align: right;
+}
+
+.calculator__keypad {
+  background-color: #232c43;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__logo {
+  font-family: "Spartan", sans-serif;
+  color: white;
+  margin: 0;
+}
+
+.header__text {
+  font-family: "Spartan", sans-serif;
+  font-size: .7rem;
+  color: white;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.header__text--theme {
+  margin-right: 1rem;
+}
+
+.header__theme-toggle, .header__toggle-range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: .25rem;
+}
+
+.header__toggle-btn {
+  width: 70px;
+  height: 20px;
+  border-radius: 2rem;
+  background-color: #232c43;
+  padding: 5px;
+}
+
+.header__toggle-indicator {
+  display: block;
+  width: 20px;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #d03f2f;
+}
+/*# sourceMappingURL=styles.css.map */
