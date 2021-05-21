@@ -4,36 +4,61 @@
     box-sizing: border-box;
 }
 
-.body {
+body {
     box-sizing: inherit;
     margin: 0;
+}
 
-    &--theme-1 {
-        background-color: $theme-1-main-bg;
-    }
+* {
+    box-sizing: inherit;
 }
 
 .calculator {
+    width: Min(540px, 100%);
+    margin: 0 auto;
     padding: 2rem 1.5rem;
 
     &__screen {
-        background-color: $theme-1-screen-bg;
         padding: .5rem 1.5rem;
         margin: 2rem 0;
         border-radius: .5rem;
     }
 
     &__current-number {
-        font-family: $font-family;
         font-size: 2rem;
-        color: $white;
         text-align: right;
     }
 
     &__keypad {
-        background-color: $theme-1-keypad-bg;
-        padding: 1rem;
+        padding: 1.5rem;
         border-radius: .5rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: .8rem;
+
+        @media (min-width: 768px) {
+            grid-gap: 1.5rem;
+        }
+    }
+
+    &__item {
+        outline: none;
+        border: none;
+        padding: 0;
+        font-family: $font-family;
+        font-size: 2rem;
+        height: 64px;
+        border-radius: 6px;
+        line-height: 100%;
+        cursor: pointer;
+    
+        &--actions {
+            font-size: 1.1rem;
+        }
+
+        &--span-2 {
+            grid-column: span 2;
+        }
     }
 }
 
@@ -43,15 +68,11 @@
     align-items: center;
 
     &__logo {
-        font-family: $font-family;
-        color: $white;
         margin: 0;
     }
 
     &__text {
-        font-family: $font-family;
         font-size: .7rem;
-        color: $white;
         letter-spacing: 1px;
         margin: 0;
 
@@ -69,20 +90,191 @@
 
     &__toggle-btn {
         width: 70px;
-        height: 20px;
+        height: 30px;
         border-radius: 2rem;
-        background-color: $theme-1-keypad-bg;
-        padding: 5px;
+        padding: 6px;
+        position: relative;
+        cursor: pointer;
     }
 
     &__toggle-indicator {
         display: block;
-        width: 20px;
-        height: 100%;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        background-color: $theme-1-equal-key-bg;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .2s ease;
     }
 }
 
-// .attribution { font-size: 11px; text-align: center; padding: 1rem; }
-// .attribution a { color: hsl(228, 45%, 44%); }
+//styles per theme
+.dark-mode {
+    background-color: $theme-1-main-bg;
+
+    .calculator {
+        &__screen {
+            background-color: $theme-1-screen-bg;
+        }
+
+        &__current-number {
+            font-family: $font-family;
+            color: $white;
+        }
+
+        &__keypad {
+            background-color: $theme-1-keypad-bg;
+        }
+
+        &__item {
+            color: $theme-1-number-keys-color;
+            background-color: $theme-1-number-keys-bg;
+            box-shadow: inset 0 -4px 0 0 $theme-1-number-keys-shadow;
+            
+            &--actions {
+                background-color: $theme-1-action-keys-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-1-action-keys-shadow;
+                color: $white;
+            }
+
+            &--equals {
+                background-color: $theme-1-equal-key-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-1-equal-key-shadow;
+                color: $white;
+            }
+        }
+    }
+
+    .header {
+        &__logo, &__text {
+            font-family: $font-family;
+            color: $white;
+        }
+
+        &__toggle-btn {
+            background-color: $theme-1-keypad-bg;
+        }
+
+        &__toggle-indicator {
+            background-color: $theme-1-equal-key-bg;
+            left: 6px;
+        }
+    }
+}
+
+.light-mode {
+    background-color: $theme-2-main-bg;
+
+    .calculator {
+        &__screen {
+            background-color: $theme-2-screen-bg;
+        }
+
+        &__current-number {
+            font-family: $font-family;
+            color: $theme-2-number-keys-color;
+        }
+
+        &__keypad {
+            background-color: $theme-2-keypad-bg;
+        }
+
+        &__item {
+            color: $theme-2-number-keys-color;
+            background-color: $theme-2-number-keys-bg;
+            box-shadow: inset 0 -4px 0 0 $theme-2-number-keys-shadow;
+            
+            &--actions {
+                background-color: $theme-2-action-keys-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-2-action-keys-shadow;
+                color: $white;
+            }
+
+            &--equals {
+                background-color: $theme-2-equal-key-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-2-equal-key-shadow;
+                color: $white;
+            }
+        }
+    }
+
+    .header {
+        &__logo, &__text {
+            font-family: $font-family;
+            color: $theme-2-number-keys-color;
+        }
+
+        &__toggle-btn {
+            background-color: $theme-2-keypad-bg;
+        }
+
+        &__toggle-indicator {
+            background-color: $theme-2-equal-key-bg;
+            left: 24px;
+        }
+    }
+}
+
+.bright-mode {
+    background-color: $theme-3-main-bg;
+
+    .calculator {
+        &__screen {
+            background-color: $theme-3-screen-bg;
+        }
+
+        &__current-number {
+            font-family: $font-family;
+            color: $theme-3-number-keys-color;
+        }
+
+        &__keypad {
+            background-color: $theme-3-keypad-bg;
+        }
+
+        &__item {
+            color: $theme-3-number-keys-color;
+            background-color: $theme-3-number-keys-bg;
+            box-shadow: inset 0 -4px 0 0 $theme-3-number-keys-shadow;
+            
+            &--actions {
+                background-color: $theme-3-action-keys-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-3-action-keys-shadow;
+                color: $white;
+            }
+
+            &--equals {
+                background-color: $theme-3-equal-key-bg;
+                box-shadow: inset 0 -4px 0 0 $theme-3-equal-key-shadow;
+                color: $theme-3-equal-key-color;
+            }
+        }
+    }
+
+    .header {
+        &__logo, &__text {
+            font-family: $font-family;
+            color: $theme-3-number-keys-color;
+        }
+
+        &__toggle-btn {
+            background-color: $theme-3-keypad-bg;
+        }
+
+        &__toggle-indicator {
+            background-color: $theme-3-equal-key-bg;
+            left: 48px;
+        }
+    }
+}
+
+.attribution { 
+    font-family: sans-serif;
+    font-size: 11px; 
+    text-align: center; 
+    padding: 1rem; 
+    background-color: $white;
+
+    a { color: hsl(228, 45%, 44%); }
+}

@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="css/styles.css">
   
   <title>Calculator App</title>
+
+  <script src="js/app.js" defer></script>
 </head>
-<body class="body body--theme-1">
+<body>
 
   <div class="calculator">
     <div class="header">
@@ -33,7 +35,8 @@
     </div>
 
     <div class="calculator__screen">
-      <h1 class="calculator__current-number">399,981</h1>
+      <h1 class="calculator__current-number">0</h1>
+      <!-- 399,981 -->
     </div>
 
     <div class="calculator__keypad">
@@ -55,7 +58,7 @@
       <button class="calculator__item" data-number=".">.</button>
       <button class="calculator__item" data-number="0">0</button>
       <button class="calculator__item" data-operation="division">/</button>
-      <button class="calculator__item" data-operation="multiplication">X</button>
+      <button class="calculator__item" data-operation="multiplication">x</button>
 
       <button 
         class="calculator__item calculator__item--actions calculator__item--span-2"
@@ -64,7 +67,7 @@
         RESET
       </button>
       <button 
-        class="calculator__item calculator__item--actions calculator__item--span-2"
+        class="calculator__item calculator__item--equals calculator__item--span-2"
         data-action="equals"
       >
         =
@@ -74,9 +77,9 @@
 
 
   
-  <!-- <div class="attribution">
+  <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by Kathlene Tajonera.
-  </div> -->
+  </div>
 </body>
 </html>
