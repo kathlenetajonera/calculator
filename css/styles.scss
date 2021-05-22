@@ -7,6 +7,7 @@
 body {
     box-sizing: inherit;
     margin: 0;
+    transition: .2s ease;
 }
 
 * {
@@ -22,11 +23,13 @@ body {
         padding: .5rem 1.5rem;
         margin: 2rem 0;
         border-radius: .5rem;
+        transition: .2s ease;
     }
 
     &__current-number {
         font-size: 2rem;
         text-align: right;
+        transition: .2s ease;
     }
 
     &__keypad {
@@ -35,6 +38,7 @@ body {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: .8rem;
+        transition: .2s ease;
 
         @media (min-width: 768px) {
             grid-gap: 1.5rem;
@@ -51,6 +55,11 @@ body {
         border-radius: 6px;
         line-height: 100%;
         cursor: pointer;
+        transition: .2s ease;
+
+        &:hover {
+            opacity: .8;
+        }
     
         &--actions {
             font-size: 1.1rem;
@@ -69,12 +78,14 @@ body {
 
     &__logo {
         margin: 0;
+        transition: .2s ease;
     }
 
     &__text {
         font-size: .7rem;
         letter-spacing: 1px;
         margin: 0;
+        transition: .2s ease;
 
         &--theme {
             margin-right: 1rem;
@@ -95,6 +106,7 @@ body {
         padding: 6px;
         position: relative;
         cursor: pointer;
+        transition: .2s ease;
     }
 
     &__toggle-indicator {
@@ -131,7 +143,7 @@ body {
             color: $theme-1-number-keys-color;
             background-color: $theme-1-number-keys-bg;
             box-shadow: inset 0 -4px 0 0 $theme-1-number-keys-shadow;
-            
+
             &--actions {
                 background-color: $theme-1-action-keys-bg;
                 box-shadow: inset 0 -4px 0 0 $theme-1-action-keys-shadow;

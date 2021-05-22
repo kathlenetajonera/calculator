@@ -8,6 +8,8 @@ body {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
   margin: 0;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 * {
@@ -25,11 +27,15 @@ body {
   padding: .5rem 1.5rem;
   margin: 2rem 0;
   border-radius: .5rem;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 .calculator__current-number {
   font-size: 2rem;
   text-align: right;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 .calculator__keypad {
@@ -40,6 +46,8 @@ body {
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
   grid-gap: .8rem;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 @media (min-width: 768px) {
@@ -58,6 +66,12 @@ body {
   border-radius: 6px;
   line-height: 100%;
   cursor: pointer;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+.calculator__item:hover {
+  opacity: .8;
 }
 
 .calculator__item--actions {
@@ -82,12 +96,16 @@ body {
 
 .header__logo {
   margin: 0;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 .header__text {
   font-size: .7rem;
   letter-spacing: 1px;
   margin: 0;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 .header__text--theme {
@@ -113,6 +131,8 @@ body {
   padding: 6px;
   position: relative;
   cursor: pointer;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 .header__toggle-indicator {

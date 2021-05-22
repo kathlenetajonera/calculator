@@ -2,8 +2,14 @@ const body = document.body;
 const themeToggleButton = document.querySelector(".header__toggle-btn");
 const themeToggleIndicator = document.querySelector(".header__toggle-indicator");
 const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const saveThemeToStorage = (themeIndex) => localStorage.setItem("themeIndex", themeIndex)
+const currentNumber = document.querySelector(".calculator__current-number");
+const keypad = document.querySelector(".calculator__keypad");
+const saveThemeToStorage = (themeIndex) => localStorage.setItem("themeIndex", themeIndex);
 let themeCounter;
+let previousOperand = '';
+let currentOperand = '';
+let operation;
+let result;
 
 loadInitialTheme();
 
@@ -38,15 +44,6 @@ function updateTheme() {
     saveThemeToStorage(themeCounter);
 }
 
-//calculator
-const currentNumber = document.querySelector(".calculator__current-number");
-const keypad = document.querySelector(".calculator__keypad");
-
-let previousOperand = '';
-let currentOperand = '';
-let operation;
-let result;
-
 keypad.addEventListener("click", e => {
     const target = e.target;
     const numberKeys = target.hasAttribute("data-number");
@@ -63,8 +60,9 @@ keypad.addEventListener("click", e => {
 
 function handleNumberKey(e) {
     const numberKey = e.target.dataset.number;
+    const isFirstNumber = !currentOperand && !previousOperand;
 
-    if (!currentOperand && numberKey === "0") return;
+    if (isFirstNumber && numberKey === "0") return;
 
     currentOperand += numberKey;
     currentNumber.textContent = currentOperand;
@@ -72,15 +70,17 @@ function handleNumberKey(e) {
 
 function handleOperationKey(e) {
     const operationKey = e.target.dataset.operation;
+    const hasBothOperands = previousOperand && currentOperand;
+    const isChangingOperator = previousOperand && !currentOperand;
 
-    if (operationKey === operation) return;
-
-    if (previousOperand) {
+    if (hasBothOperands) {
         handleComputation();
 
         operation = operationKey;
         previousOperand = result;
         currentOperand = '';
+    } else if (isChangingOperator) {
+        operation = operationKey;
     } else { 
         operation = operationKey;
 
@@ -108,6 +108,9 @@ function handleActionKeys(e) {
             break;
         case "equals":
             handleComputation();
+
+            previousOperand = '';
+            currentOperand = result;
 
             break;
         default:
