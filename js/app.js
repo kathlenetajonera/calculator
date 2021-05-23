@@ -5,6 +5,7 @@ const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const currentNumber = document.querySelector(".calculator__current-number");
 const keypad = document.querySelector(".calculator__keypad");
 const saveThemeToStorage = (themeIndex) => localStorage.setItem("themeIndex", themeIndex);
+const numberFormat = new Intl.NumberFormat();
 let themeCounter;
 let previousOperand = '';
 let currentOperand = '';
@@ -92,7 +93,7 @@ function handleNumberKey(numberKey) {
     if (isFirstNumber && numberKey === "0") return;
 
     currentOperand += numberKey;
-    currentNumber.textContent = currentOperand;
+    currentNumber.textContent = numberFormat.format(currentOperand);
 }
 
 function handleOperationKey(operationKey) {
@@ -126,7 +127,7 @@ function handleActionKeys(actionKey) {
             const updatedOperand = currentOperand.slice(0, currentOperand.length - 1);
             currentOperand = updatedOperand;
 
-            if (currentOperand) currentNumber.textContent = currentOperand;
+            if (currentOperand) currentNumber.textContent = numberFormat.format(currentOperand);
             else currentNumber.textContent = 0;
 
             break;
@@ -169,5 +170,5 @@ function handleComputation() {
             break;
     }
 
-    currentNumber.textContent = result;
+    currentNumber.textContent = numberFormat.format(result);
 }
