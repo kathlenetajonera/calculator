@@ -93,7 +93,7 @@ function handleNumberKey(numberKey) {
     if (isFirstNumber && numberKey === "0") return;
 
     currentOperand += numberKey;
-    currentNumber.textContent = numberFormat.format(currentOperand);
+    currentNumber.textContent = currentOperand !== "." ? numberFormat.format(currentOperand) : currentOperand;
 }
 
 function handleOperationKey(operationKey) {
@@ -117,6 +117,8 @@ function handleOperationKey(operationKey) {
 }
 
 function handleActionKeys(actionKey) {
+    const hasBothOperands = previousOperand && currentOperand;
+
     switch (actionKey) {
         case "reset":
             currentOperand = '';
@@ -132,10 +134,12 @@ function handleActionKeys(actionKey) {
 
             break;
         case "equals":
-            handleComputation();
+            if (hasBothOperands) {
+                handleComputation();
 
-            previousOperand = '';
-            currentOperand = result;
+                previousOperand = '';
+                currentOperand = result;
+            }
 
             break;
         default:
@@ -146,6 +150,9 @@ function handleActionKeys(actionKey) {
 function handleComputation() {
     let operandOne = parseFloat(previousOperand);
     let operandTwo = parseFloat(currentOperand);
+
+    console.log(previousOperand);
+    console.log(currentOperand);
 
     if (previousOperand === "." && previousOperand.length === 1) {
         operandOne = 0;
