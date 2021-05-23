@@ -50,16 +50,43 @@ keypad.addEventListener("click", e => {
     const operationKeys = target.hasAttribute("data-operation");
 
     if (numberKeys) {
-        handleNumberKey(e);
+        const number = e.target.dataset.number;
+
+        handleNumberKey(number);
     } else if (operationKeys) {
-        handleOperationKey(e);
+        const operation = e.target.dataset.operation;
+
+        handleOperationKey(operation);
     } else {
-        handleActionKeys(e);
+        const action = e.target.dataset.action;
+
+        handleActionKeys(action);
     }
 })
 
-function handleNumberKey(e) {
-    const numberKey = e.target.dataset.number;
+document.addEventListener("keydown", e => {
+    const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+    const operators = { addition: "+",  subtraction: "-", multiplication: "*", division: "/" };
+    const key = e.key;
+
+    const isNumber = numbers.find(number => number === key);
+    const operatorIndex = Object.values(operators).findIndex(operator => operator === key);
+    const isActionKey = key === "Enter" || key === "Backspace";
+
+    if (isNumber) {
+        handleNumberKey(key);
+    } else if (operatorIndex !== -1) {
+        const operation = Object.keys(operators)[operatorIndex];
+
+        handleOperationKey(operation)
+    } else if (isActionKey) {
+        key === "Enter"
+        ? handleActionKeys("equals")
+        : handleActionKeys("delete")
+    } else return;
+})
+
+function handleNumberKey(numberKey) {
     const isFirstNumber = !currentOperand && !previousOperand;
 
     if (isFirstNumber && numberKey === "0") return;
@@ -68,8 +95,7 @@ function handleNumberKey(e) {
     currentNumber.textContent = currentOperand;
 }
 
-function handleOperationKey(e) {
-    const operationKey = e.target.dataset.operation;
+function handleOperationKey(operationKey) {
     const hasBothOperands = previousOperand && currentOperand;
     const isChangingOperator = previousOperand && !currentOperand;
 
@@ -89,9 +115,7 @@ function handleOperationKey(e) {
     }
 }
 
-function handleActionKeys(e) {
-    const actionKey = e.target.dataset.action;
-
+function handleActionKeys(actionKey) {
     switch (actionKey) {
         case "reset":
             currentOperand = '';
@@ -119,8 +143,14 @@ function handleActionKeys(e) {
 }
 
 function handleComputation() {
-    const operandOne = parseFloat(previousOperand);
-    const operandTwo = parseFloat(currentOperand);
+    let operandOne = parseFloat(previousOperand);
+    let operandTwo = parseFloat(currentOperand);
+
+    if (previousOperand === "." && previousOperand.length === 1) {
+        operandOne = 0;
+    } else if (currentOperand === "." && currentOperand.length === 1) {
+        operandTwo = 0;
+    }
 
     switch (operation) {
         case "addition":
